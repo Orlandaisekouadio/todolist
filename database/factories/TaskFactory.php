@@ -14,11 +14,12 @@ class TaskFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    
     public function definition(): array
     {
         return [
             //Les différents attributs
-            "title"=> $this->faker->sentence(8,true),
+            "title"=> $this->faker->sentence(3,true),
             "description"=> $this->faker->paragraph(2,true),
             "state"=>$this->faker->randomElement(["En cours","Terminé"]),
         ];

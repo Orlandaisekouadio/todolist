@@ -20,4 +20,9 @@ Route::get('/', function () {
 
 Route::controller(TaskController::class)->group(function () {
     Route::get('/home', 'index');
+    Route::delete('/delete/{id}','destroy');
+
+    Route::get('/status/{id}','status');
+    Route::get('modifier/{id}','edit');
+
 });
