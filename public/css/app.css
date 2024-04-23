@@ -1,0 +1,8 @@
+.pull_up {
+    transition: all 0.25s ease;
+}
+.pull_up:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0px 14px 24px rgba(62, 57, 107, 0.2);
+    z-index: 30;
+}
