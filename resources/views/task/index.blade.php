@@ -26,11 +26,11 @@
                         <div class="btn-group mt-3">
                             <form action="{{url("/status/{$task->id}")}}" methode="get">
                                 @csrf
-                            
                                 <button class="btn btn-success">
                                     Terminer
                                 </button>
                             </form>
+
                             <form action="{{url("/delete/{$task->id}")}}" method="POST">
                              @csrf
                              @method('DELETE')
@@ -38,6 +38,7 @@
                                     Supprimer
                                 </button>
                             </form>
+                            
                             <form action="{{url("/edit/{$task->id}")}}" method="get">
                                 @csrf
                                 <button class="btn btn-primary">
