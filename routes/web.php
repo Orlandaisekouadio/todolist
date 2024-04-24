@@ -23,7 +23,7 @@ Route::controller(TaskController::class)->group(function () {
     Route::delete('/delete/{id}','destroy');
 
     Route::get('/status/{id}','status');
-    Route::get('/edit{id}','edit');
+    Route::get('/edit/{id}','edit');
 
     Route::post('/update/{id}','update');
 

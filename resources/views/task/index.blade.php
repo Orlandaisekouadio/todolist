@@ -6,6 +6,9 @@
         <h2 class="text-success text-center "> Toutes les tâches inscrites </h2>
 
         <div class="row justify-content-center">
+            @php
+                $ide = 1
+            @endphp
            @foreach ($tasks->sortBy("id") as $task)
 
            <div class="col-5 col-md-4 my-2">
@@ -13,7 +16,7 @@
                     <div class="card-body d-flex flex-column justify-content-between align-content-start">
 
                         <div class="card-tite h5 text-secondary">
-                            {{$task->title}}
+                            <span>Titre N°{{$ide}}: </span>{{$task->title}}
                         </div>
 
                         <div class="card-text text-black">
@@ -48,6 +51,9 @@
                 </div>
 
             </div>
+            @php
+                $ide+= 1 
+            @endphp
                
            @endforeach
             

@@ -53,15 +53,17 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Mis à jour (traitement de la modification)
-        $task = Task::find($id);
+       
         //Validation des champs du formulaire de modification
         $request->validate([
             'title' => 'required',
             'description' => 'required',
             'state' => 'required'
         ]);
+
         
+        $task = Task::find($id);
+
         //L'envoi à nos attributs du modèle Task
         $task->title = $request->title;
         $task->description = $request->description;
@@ -71,6 +73,7 @@ class TaskController extends Controller
         $task->update();
 
         return redirect("/home")->with('success','Modification réussie');
+        
     }
 
     /**
