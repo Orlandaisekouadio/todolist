@@ -14,6 +14,7 @@ class TaskFactory extends Factory
      *
      * @return array<string, mixed>
      */
+<<<<<<< HEAD
     
     public function definition(): array
     {
@@ -22,6 +23,14 @@ class TaskFactory extends Factory
             "title"=> $this->faker->sentence(3,true),
             "description"=> $this->faker->paragraph(2,true),
             "state"=>$this->faker->randomElement(["En cours","Terminé"]),
+=======
+    public function definition(): array
+    {
+        return [
+            'title' => $this->faker->sentence('3', true),
+            'description' => $this->faker->sentence(15, true),
+            'state' => 'En cours',
+>>>>>>> 3d0943eaaa2f6d99764c3cfc4058e2a72643ea36
         ];
     }
 }

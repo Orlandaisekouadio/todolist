@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d0943eaaa2f6d99764c3cfc4058e2a72643ea36
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -15,6 +19,13 @@ class TaskController extends Controller
         return view('task.index', compact('tasks'));
     }
 
+    public function uncompletedTasks()
+    {
+
+        $uncompleteTasks = Task::where('state', 'En cours')->get();
+        // dd($uncompleteTasks);
+        return view('task.uncompleted', compact('uncompleteTasks'));
+    }
     /**
      * Show the form for creating a new resource.
      */
