@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-5 mb-3">
         <h2 class="text-success text-center "> Toutes mes tâches </h2>
         <div class="row justify-content-center">
             @foreach ($tasks as $task)
@@ -15,7 +15,7 @@
                                 {{ $task->description }}
                             </div>
                             <div class="btn-group mt-3">
-                                <button class="btn btn-success">
+                                <button class="btn btn-success @if ($task->state == 'Terminé') d-none @endif">
                                     Terminer
                                 </button>
                                 <button class="btn btn-danger">
@@ -30,9 +30,9 @@
                 </div>
             @endforeach
         </div>
-        <div class="fixed-bottom me-3 mb-3 d-flex justify-content-end ">
-            <button type="button" class="btn btn-success rounded-circle" style="width: 60px; height: 60px;"
-                data-toggle ="modal" data-target = "#modalForm">
+        <div class="fixed-bottom  mb-3 d-flex justify-content-end style="width: 60px; height: 60px;"">
+            <button type="button" class="btn btn-success rounded-circle" data-bs-toggle ="modal"
+                data-bs-target = "#modalForm">
                 <img src="{{ asset('plus-lg.svg') }}" alt="Nouvelle tache" style="width: 100%; height: 100%;">
             </button>
         </div>
@@ -42,20 +42,20 @@
                     <div class="modal-header">
                         <div class="modal-title" id="formTitle">
                             <h3 class="text-success">Ajouter une tache</h3>
-                            <button type="button" class="close" data-dismiss = "modal" aria-label="close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
                         </div>
+                        <button type="button" class="btn-close" data-bs-dismiss = "modal" aria-label="Close">
+
+                        </button>
                     </div>
                     <div class="modal-body">
                         <form action="" method="POST">
                             @csrf
                             <div class="form-group mt-2">
-                                <label class="form-label" for="title">Titre</label>
+                                <label class="col-form-label text-dark" for="title">Titre</label>
                                 <input type="text" name="title" id="title" class="form-control" required>
                             </div>
                             <div class="form-group mt-2">
-                                <label for="description">Description de la tâche</label>
+                                <label for="description" class="col-form-label text-dark">Description de la tâche</label>
                                 <textarea name="description" id="description" class="form-control" required></textarea>
                             </div>
 

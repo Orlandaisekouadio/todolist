@@ -10,14 +10,16 @@
     <title>Todolist</title>
 </head>
 
-<body class=" bg-dark text-white">
+<body class="bg-dark text-white">
 
     @include('nav')
 
     @yield('content')
 
 
+    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
+
 
 
 </body>

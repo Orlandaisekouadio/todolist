@@ -16,6 +16,13 @@ class TaskController extends Controller
         return view('task.index', compact('tasks'));
     }
 
+    public function uncompletedTasks()
+    {
+
+        $uncompleteTasks = Task::where('state', 'En cours')->get();
+        // dd($uncompleteTasks);
+        return view('task.uncompleted', compact('uncompleteTasks'));
+    }
     /**
      * Show the form for creating a new resource.
      */

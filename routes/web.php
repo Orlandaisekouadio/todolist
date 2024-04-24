@@ -20,4 +20,5 @@ Route::get('/', function () {
 
 Route::controller(TaskController::class)->group(function () {
     Route::get('/home', 'index');
+    Route::get('/uncompleted', 'uncompletedTasks');
 });
