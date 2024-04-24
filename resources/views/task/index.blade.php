@@ -31,6 +31,7 @@
                                 </button>
                             </form>
 
+
                             <form action="{{url("/delete/{$task->id}")}}" method="POST">
                              @csrf
                              @method('DELETE')
@@ -38,7 +39,8 @@
                                     Supprimer
                                 </button>
                             </form>
-                            
+
+
                             <form action="{{url("/edit/{$task->id}")}}" method="get">
                                 @csrf
                                 <button class="btn btn-primary">
