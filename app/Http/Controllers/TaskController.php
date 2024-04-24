@@ -1,10 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
-=======
-
->>>>>>> 3d0943eaaa2f6d99764c3cfc4058e2a72643ea36
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -84,7 +80,7 @@ class TaskController extends Controller
         $task->update();
 
         return redirect("/home")->with('success','Modification réussie');
-        
+
     }
 
     /**

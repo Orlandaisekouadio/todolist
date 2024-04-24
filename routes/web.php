@@ -20,7 +20,6 @@ Route::get('/', function () {
 
 Route::controller(TaskController::class)->group(function () {
     Route::get('/home', 'index');
-<<<<<<< HEAD
     Route::delete('/delete/{id}','destroy');
 
     Route::get('/status/{id}','status');
@@ -28,7 +27,6 @@ Route::controller(TaskController::class)->group(function () {
 
     Route::post('/update/{id}','update');
 
-=======
     Route::get('/uncompleted', 'uncompletedTasks');
->>>>>>> 3d0943eaaa2f6d99764c3cfc4058e2a72643ea36
+
 });
