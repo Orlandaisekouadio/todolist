@@ -35,12 +35,11 @@
                                     Supprimer
                                 </button>
                             </form>
-                            <form action="{{url("modifier/{$task->id}")}}" method="get">
+                            <form action="{{url("/edit/{$task->id}")}}" method="get">
                                 @csrf
-                                @method('DELETE')
-                                <a class="btn btn-primary">
+                                <button class="btn btn-primary">
                                     Modifier
-                                </a>
+                                </button>
                             </form>
                         </div>
 

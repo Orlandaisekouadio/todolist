@@ -42,17 +42,35 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $task = Task::find($id);
+        return view('task.modif', compact('task'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        //Mis à jour (traitement de la modification)
+        $task = Task::find($id);
+        //Validation des champs du formulaire de modification
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'state' => 'required'
+        ]);
+        
+        //L'envoi à nos attributs du modèle Task
+        $task->title = $request->title;
+        $task->description = $request->description;
+        $task->state = $request->state;
+
+        // Modification vers la bdd
+        $task->update();
+
+        return redirect("/home")->with('success','Modification réussie');
     }
 
     /**
