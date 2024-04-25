@@ -23,9 +23,9 @@ Route::controller(TaskController::class)->group(function () {
     Route::delete('/delete/{id}','destroy');
 
     Route::get('/status/{id}','status');
-    Route::get('/edit/{id}','edit');
+    Route::get('/edit/{id}/{nb}','edit');
 
-    Route::post('/update/{id}','update');
+    Route::post('/update/{id}/{nb}','update');
 
     Route::get('/uncompleted', 'uncompletedTasks');
     Route::post('/ajouter','create');

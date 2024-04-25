@@ -41,7 +41,7 @@
                             </form>
 
 
-                            <form action="{{url("/edit/{$task->id}")}}" method="get">
+                            <form action="{{url("/edit/{$task->id}/2")}}" method="get">
                                 @csrf
                                 <button class="btn btn-primary">
                                     Modifier

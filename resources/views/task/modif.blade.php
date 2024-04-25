@@ -8,8 +8,8 @@
         <h1>MODIFICATION D'UNE TACHE</h1>
 
         <hr>
-            <div class="col s12" >
-           <form action="{{url("/update/{$task->id}")}}" method="post">
+           <div class="col s12">
+           <form action="{{url("/update/{$task->id}/{$nb}")}}" method="post">
                 @csrf
                 <input type="text" name="id" style = "display:none" value="{{$task->id}}">
                 <div class="form-group mb-3">
