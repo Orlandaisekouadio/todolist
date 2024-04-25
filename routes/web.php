@@ -28,5 +28,8 @@ Route::controller(TaskController::class)->group(function () {
     Route::post('/update/{id}','update');
 
     Route::get('/uncompleted', 'uncompletedTasks');
+    Route::post('/ajouter','create');
+
+    Route::get('/completed', 'completedTasks');
 
 });

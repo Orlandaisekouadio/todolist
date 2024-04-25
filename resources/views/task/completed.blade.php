@@ -1,14 +1,14 @@
 @extends('app')
 @section('content')
     <div class="container-fluid mt-5">
-        <h2 class="text-success text-center "> Toutes les tâches en cours </h2>
+        <h2 class="text-success text-center "> Toutes les tâches terminées </h2>
          <div class="row justify-content-center">
            
             @php
                 $ide = 1
             @endphp
             @foreach ($tasks->sortBy("id") as $task)
-            @if ($task->state = "En cours")
+            @if ($task->state = "Terminé")
                 
            
            <div class="col-5 col-md-4 my-2">

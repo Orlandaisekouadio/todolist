@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TaskController extends Controller
 {
@@ -15,19 +17,38 @@ class TaskController extends Controller
         return view('task.index', compact('tasks'));
     }
 
+    public function completedTasks(){
+        $tasks = Task::where('state', 'Terminé');
+
+        return view('task.completed', compact('tasks'));
+    }
+
     public function uncompletedTasks()
     {
 
-        $uncompleteTasks = Task::where('state', 'En cours')->get();
+        $tasks = Task::where('state', 'En cours')->get();
+
         // dd($uncompleteTasks);
-        return view('task.uncompleted', compact('uncompleteTasks'));
+        return view('task.uncompleted', compact('tasks'));
     }
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+           'title'=>'required',
+           'description'=> 'required',
+        ]);
+
+        $task = new Task();
+
+        $task->title = $request->title;
+        $task->description = $request->description;
+        $task->state = 'En cours';
+
+        $task->save();
+        return redirect("/home")->with("success","Ajout avec succès");
     }
 
     /**
@@ -60,7 +81,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+
         //Validation des champs du formulaire de modification
         $request->validate([
             'title' => 'required',
@@ -68,7 +89,7 @@ class TaskController extends Controller
             'state' => 'required'
         ]);
 
-        
+
         $task = Task::find($id);
 
         //L'envoi à nos attributs du modèle Task
@@ -79,7 +100,7 @@ class TaskController extends Controller
         // Modification vers la bdd
         $task->update();
 
-        return redirect("/home")->with('success','Modification réussie');
+        return redirect("/home")->with('success', 'Modification réussie');
 
     }
 
@@ -91,19 +112,29 @@ class TaskController extends Controller
         //Suppression des tâches 
         $task = Task::find($id);
         $task->delete();
-        return redirect("/home")->with('success','Bien supprimé');
+
+
+
+        return redirect("/home")->with('success', 'Bien supprimé');
     }
 
-    public function status(string $id){
+    public function status(string $id,Request $request)
+    {
         $task = Task::find($id);
-        if ($task->state==="Terminé") {
-            $task->state= "En cours";
-            $task->save();
-            return redirect("/home")->with("success","La tâche est toujours en cours");
+       
+        if ($task->state === "Terminé") {
+            $task->state = "En cours";
+            $currentUrl = $request->header("referer");
+
+            return Redirect::to($currentUrl)->with("success", "La tâche est à présent terminée");
+          
         } else {
-            $task->state= "Terminé";
+            $task->state = "Terminé";
             $task->save();
-            return redirect("/home")->with("success","La tâche est à présent terminée");
+            $currentUrl = $request->url();
+            
+            return Redirect::to($currentUrl)->with("success", "La tâche est à présent terminée");
+           
         }
     }
 }

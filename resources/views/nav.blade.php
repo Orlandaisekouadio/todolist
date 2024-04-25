@@ -9,7 +9,7 @@
                     class="nav-link @if (request()->path() == 'home') active @endif  ">Toutes</a></li>
             <li class="nav-item "><a href="{{ url('/uncompleted') }}"
                     class="nav-link @if (request()->path() == 'uncompleted') active @endif ">En cours</a></li>
-            <li class="nav-item "><a href=""
+            <li class="nav-item "><a href="{{ url('/completed') }}"
                     class="nav-link @if (request()->path() == 'completed') active @endif ">Terminées</a></li>
         </ul>
     </div>
