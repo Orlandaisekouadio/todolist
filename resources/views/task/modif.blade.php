@@ -14,7 +14,7 @@
                 <input type="text" name="id" style = "display:none" value="{{$task->id}}">
                 <div class="form-group mb-3">
                     <label for="nom" class="form-label">Nom de la tâche</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Entrez le nom de la tâche" value="{{$task->title }}">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Entrez le nom de la tâche" value="{{$task->title}}">
                 </div>  
 
                 <div class="form-group mb-3">
