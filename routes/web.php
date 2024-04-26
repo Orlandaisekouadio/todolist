@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::controller(TaskController::class)->group(function () {
+    Route::get('/home', 'index');
+    Route::delete('/delete/{id}', 'destroy');
 
-require __DIR__.'/auth.php';
+    Route::get('/status/{id}', 'status');
+    Route::get('/edit/{id}/{nb}', 'edit');
+
+    Route::post('/update/{id}/{nb}', 'update');
+
+    Route::get('/uncompleted', 'uncompletedTasks');
+    Route::post('/ajouter', 'create');
+
+    Route::get('/completed', 'completedTasks');
+
+});
+
+require __DIR__ . '/auth.php';
