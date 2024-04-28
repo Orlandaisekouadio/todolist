@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 Route::controller(TaskController::class)->group(function () {
     Route::get('/home', 'index');
     Route::delete('/delete/{id}', 'destroy');
+    Route::get('/myhome','mytasks');
 
     Route::get('/status/{id}', 'status');
     Route::get('/edit/{id}/{nb}', 'edit');

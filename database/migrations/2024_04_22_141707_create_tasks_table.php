@@ -16,7 +16,12 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->enum('state', ['En cours', 'Terminé'])->default('En cours');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+
         });
     }
 

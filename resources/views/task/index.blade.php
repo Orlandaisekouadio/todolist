@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-         
+
     <div class="container-fluid mt-5 mb-3">
         <h2 class="text-success text-center "> Toutes les tâches inscrites </h2>
         <div class="row justify-content-center">
@@ -21,6 +21,8 @@
                         <div class="card-text text-black">
                             {{$task->description}}
                         </div>
+
+                       @if($task->user_id === $users->id )
 
                         <div class="btn-group mt-3 ">
                             <form action="{{url("/status/{$task->id}")}}" methode="get">
@@ -47,16 +49,21 @@
                                 </button>
                             </form>
                         </div>
+
+                       @endif
+
                     </div>
-                </div>  
-           </div> 
+                </div>
+           </div>
             @php
-                $ide+= 1 
+                $ide+= 1
             @endphp
-               
+
            @endforeach
-         
-        </div> 
+
+        </div>
+        @auth
+
         <div class="fixed-bottom  mb-3 d-flex justify-content-end style="width: 60px; height: 60px;>
             <button type="button" class="btn btn-success rounded-circle" data-bs-toggle ="modal"
                 data-bs-target = "#modalForm">
@@ -67,15 +74,21 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+
                         <div class="modal-title" id="formTitle">
                             <h3 class="text-success">Ajouter une tache</h3>
                         </div>
+
                         <button type="button" class="btn-close" data-bs-dismiss = "modal" aria-label="Close">
 
                         </button>
+
                     </div>
+
                     <div class="modal-body">
+
                         <form action="{{url("/ajouter")}}" method="POST">
+
                             @csrf
                             <div class="form-group mt-2">
                                 <label class="col-form-label text-dark" for="title">Titre</label>
@@ -88,17 +101,19 @@
                             <div class="modal-footer">
                                <button type="submit" class="btn btn-primary mt-2">Ajouter</button>
                            </div>
+
                         </form>
+
                     </div>
-                    
 
                 </div>
 
             </div>
-           
-            
-          
+
         </div>
+
+        @endauth
+
 
     </div>
 
