@@ -22,8 +22,10 @@
                         <div class="card-text text-black">
                             {{$task->description}}
                         </div>
+                        @auth
 
-                         @if($task->user_id === $users->id )
+
+                         @if($task->user_id === $users->id)
 
                         <div class="btn-group mt-3 ">
                             <form action="{{url("/status/{$task->id}")}}" methode="get">
@@ -52,6 +54,7 @@
                         </div>
 
                        @endif
+                       @endauth
                     </div>
                 </div>
            </div>

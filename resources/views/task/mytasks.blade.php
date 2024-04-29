@@ -3,10 +3,13 @@
 @section('content')
     <div class="container-fluid mt-5 mb-3">
         <h2 class="text-success text-center "> Toutes mes tâches inscrites </h2>
+         @auth
         <div class="row justify-content-center">
+
             @php
                 $ide = 1;
             @endphp
+
             @foreach ($tasks->sortBy('id') as $task)
                 @if ($task->user_id === $users->id)
                 <div class="col-5 col-md-4 my-2">
@@ -60,7 +63,7 @@
             @endforeach
 
         </div>
-        @auth
+
 
             <div class="fixed-bottom  mb-3 d-flex justify-content-end style="width: 60px; height: 60px;>
                 <button type="button" class="btn btn-success rounded-circle" data-bs-toggle ="modal"

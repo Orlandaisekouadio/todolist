@@ -55,14 +55,14 @@ class TaskController extends Controller
 
         $task = new Task();
         $currentUrl = $request->header("referer");
-        dd($currentUrl);
+
 
         $task->title = $request->title;
         $task->description = $request->description;
         $task->state = 'En cours';
         $task->user_id = $user->id;
         $task->save();
-        return redirect("/home")->with("success","Ajout avec succès");
+        return redirect($currentUrl)->with("success","Ajout avec succès");
     }
 
     public function myTasks(){

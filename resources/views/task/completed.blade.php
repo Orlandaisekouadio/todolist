@@ -23,6 +23,9 @@
                             {{$task->description}}
                         </div>
 
+                         @auth
+
+
                          @if($task->user_id === $users->id )
 
                         <div class="btn-group mt-3 ">
@@ -52,6 +55,8 @@
                         </div>
 
                        @endif
+
+                       @endauth
                     </div>
                 </div>
            </div>
