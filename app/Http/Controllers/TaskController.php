@@ -134,15 +134,16 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         //Suppression des tâches
         $task = Task::find($id);
         $task->delete();
+        $currentUrl = $request->header('referer');
 
 
 
-        return redirect("/home")->with('success', 'Bien supprimé');
+        return redirect($currentUrl)->with('success', 'Bien supprimé');
     }
 
     public function status(string $id,Request $request)
